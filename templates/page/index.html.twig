@@ -1,12 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Yo les petits potes!{% endblock %}
-
+{% set pageH1 = 'Accueil' %}
+{% block bodyClass %}homepage{% endblock %}
 {% block body %}
-
-
-<div class="example-wrapper">
-    <h1>Bienvenue dans le poject de comptabilité</h1>
-    <p>lorem upsum</p>
-</div>
+    <div class="example-wrapper">
+        <h1>Bienvenue dans le poject de comptabilité</h1>
+        <p>lorem upsum</p>
+    </div>
+    <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Bienvenue dans l'espace d'administration</h2>
+                        <hr>
+                        <p class="card-text">
+                            À partir de cet espace vous pouvez gérer les pages de votre site et vos informations personnelles.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 {% endblock %}

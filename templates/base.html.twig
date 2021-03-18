@@ -3,8 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('adminLTE/plugins/fontawesome-free/css/all.min.css') }}">
+        <!-- icheck bootstrap -->
+        <link rel="stylesheet" href="{{ asset('adminLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('adminLTE/dist/css/adminlte.min.css') }}">
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
@@ -13,7 +22,14 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body>
+    <body class="{% block bodyClass %}{% endblock %}">
         {% block body %}{% endblock %}
+
+        <!--Jquery -->
+        <script src="{{ asset('adminLTE/plugins/jquery/jquery.min.js') }}"></script>
+        <!--bootstrap -->
+        <script src="{{ asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!--AdminLTE -->
+        <script src="{{ asset('adminLTE/dist/js/adminlte.min.js') }}"></script>
     </body>
 </html>
