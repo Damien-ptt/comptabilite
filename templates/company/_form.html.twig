@@ -1,0 +1,40 @@
+<div class="card card-light">
+    <div class="card-header">
+    <h3 class="card-title">Renseigner vos informations ici:</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    {{ form_start(form) }}
+        <div class="card-body">
+            <div class="form-group">
+                {{ form_label(form.companyName) }}
+                {{ form_widget(form.companyName,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.siret) }}
+                {{ form_widget(form.siret,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.streetName) }}
+                {{ form_widget(form.streetName,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.city) }}
+                {{ form_widget(form.city,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.postalCode) }}
+                {{ form_widget(form.postalCode,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.country) }}
+                {{ form_widget(form.country,{'attr':{'class':'form-control'}}) }}
+            </div>
+        </div>
+        <!-- /.card-body -->
+        {{ form_rest(form) }}
+        <div class="card-footer">
+            <button class="btn {% if button_label is defined %}btn-outline-warning{% else %}btn-outline-success{% endif %}">{{ button_label|default('Ajouter') }}</button>
+        </div>
+    {{ form_end(form) }}
+</div>
