@@ -7,6 +7,10 @@
     {{ form_start(form) }}
         <div class="card-body">
             <div class="form-group">
+                {{ form_label(form.customerCode) }}
+                {{ form_widget(form.customerCode,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
                 {{ form_label(form.companyName) }}
                 {{ form_widget(form.companyName,{'attr':{'class':'form-control'}}) }}
             </div>
@@ -29,6 +33,18 @@
             <div class="form-group">
                 {{ form_label(form.country) }}
                 {{ form_widget(form.country,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.contactFirstName) }}
+                {{ form_widget(form.contactFirstName,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.contactLastName) }}
+                {{ form_widget(form.contactLastName,{'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.tvaNumber) }}
+                {{ form_widget(form.tvaNumber,{'attr':{'class':'form-control'}}) }}
             </div>
         </div>
         <!-- /.card-body -->

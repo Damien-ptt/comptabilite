@@ -68,19 +68,19 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                        <i class="fab fa-creative-commons-nc-eu" style="font-size:1.8rem"></i>&nbsp;&nbsp;Devis
+                        <a href="pages/widgets.html" class="nav-link" style="font-size:1.2rem">
+                        <i class="fab fa-creative-commons-nc-eu" style="font-size:1.8rem"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Devis
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                        <i class="far fa-address-book" style="font-size:1.8rem"></i>&nbsp;&nbsp;Clients
+                        <a href="{{ path('customer_index')}}" class="nav-link" style="font-size:1.2rem">
+                        <i class="far fa-address-book" style="font-size:1.8rem"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clients
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/widgets.html" class="nav-link">
-                        <i class="fas fa-file-invoice-dollar" style="font-size:1.8rem"></i>&nbsp;&nbsp;Factures
-                        </a>
+                        <a href="pages/widgets.html" class="nav-link" style="font-size:1.2rem">
+                        <i class="fas fa-file-invoice-dollar" style="font-size:1.8rem"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Factures
+                        </a> 
                     </li>
                     
                 </nav>
@@ -111,12 +111,13 @@
             </div>
         </div>
 
-
         <!--Jquery -->
         <script src="{{ asset('adminLTE/plugins/jquery/jquery.min.js') }}"></script>
         <!--bootstrap -->
         <script src="{{ asset('adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!--AdminLTE -->
         <script src="{{ asset('adminLTE/dist/js/adminlte.min.js') }}"></script>
+        {% block footerJs %}
+        {% endblock %}
     </body>
 </html>
