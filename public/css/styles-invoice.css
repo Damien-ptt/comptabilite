@@ -1,0 +1,48 @@
+.container.print {
+    margin: 25px auto;
+}
+h1 {
+    color: #204d76;
+    font-size: 2rem;
+}
+h2 {
+    text-transform: uppercase;
+    color: #757575;
+    font-size: 1.3rem;
+}
+.sep {
+    height: 25px;
+}
+.bill-infos {
+    color: #21405d;
+    font-weight: 500;
+}
+.delivery-details-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+p.mission-title {
+    margin: 0 0 15px 0;
+    font-size: 1.6rem;
+    color: #204d76;
+}
+.total-lines {
+    width: 190px;
+}
+.total-line {
+    margin: 5px 0;
+}
+span.value {
+    font-weight: 500;
+}
+.thank-you {
+    font-weight: bold;
+    margin: 0;
+    font-style: italic;
+}
+.payment {
+    font-size: 14px;
+}
+p.legal-notice {
+    font-size: 12px;
+}

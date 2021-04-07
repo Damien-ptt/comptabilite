@@ -1,0 +1,86 @@
+  <!-- InputMask -->
+    <script src="{{ asset('adminLTE/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('adminLTE/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+    <script>
+        $('#{{form.createdDate.vars.id }}').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+    </script>
+    <script>
+        function addFormToCollection($collectionHolderClass) {
+            // Get the ul that holds the collection of tags
+            var $collectionHolder = $('.' + $collectionHolderClass);
+
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype;
+            // You need this only if you didn't set 'label' => false in your tags field in TaskType
+            // Replace '__name__label__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            // newForm = newForm.replace(/__name__label__/g, index);
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            newForm = newForm.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+            // Add the new form at the end of the list
+            $collectionHolder.append($newFormLi)
+        }
+        jQuery(document).ready(function() {
+            // Get the ul that holds the collection of tags
+            var $tagsCollectionHolder = $('ul.invoice-lines');
+            // count the current form inputs we have (e.g. 2), use that as the new
+            // index when inserting a new item (e.g. 2)
+            $tagsCollectionHolder.data('index', $tagsCollectionHolder.find('input').length);
+
+            $('body').on('click', '.add_item_link', function(e) {
+                var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+                // add a new tag form (see next code block)
+                addFormToCollection($collectionHolderClass);
+            })
+        });
+    </script>
+    <script>
+        // Vaut 1.2 si tva 20%
+        var tvaCoef = 1;
+        var $amountTotal = $('#amount-total');
+        var $amountTotalTVA = $('#amount-totalTVA');
+        var $amountTotalTTC = $('#amount-totalTTC');
+        function calcul_total(){
+            var amountTotal = 0;
+            var amountTotalTVA = 0;
+            var amountTotalTTC = 0;
+            $('.invoice-line').each(function(){
+                var qty = $(this).find('.quantity').val();
+                var prixTTC = $(this).find('.amountTaxIncluded').val();
+                if (qty == '' || prixTTC == '') {
+                    return;
+                }
+                var prixTTC = parseFloat(prixTTC);
+                var prixHT = parseFloat((prixTTC / tvaCoef).toFixed(2));
+                var prixTVA = parseFloat((prixTTC - prixHT).toFixed(2));
+                amountTotal += qty*prixHT;
+                amountTotalTVA += qty*prixTVA;
+                amountTotalTTC += qty*prixTTC;
+            });
+            $amountTotal.html(amountTotal);
+            $amountTotalTVA.html(amountTotalTVA);
+            $amountTotalTTC.html(amountTotalTTC);
+        }
+        $('body').on('click', '.add_item_link', function(e) {
+            calcul_total();
+        });
+        $('body').on('input', '.quantity', function(e) {
+            calcul_total();
+        });
+        $('body').on('input', '.amountTaxIncluded', function(e) {
+            calcul_total();
+        });
+    </script>

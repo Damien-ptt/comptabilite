@@ -54,9 +54,9 @@
         </tbody>
     </table>
 
-    <a class="btn btn-warning" href="{{ path('customer_edit', {'id': customer.id}) }}">Mettre à jour</a>
+    <a class="btn btn-warning mb-2 mr-1" href="{{ path('customer_edit', {'id': customer.id}) }}">Mettre à jour</a>
 
-    <a class="btn btn-light" href="{{ path('customer_index') }}">Retourner au tableau clients</a>
+    <a class="btn btn-light mb-2" href="{{ path('customer_index') }}">Retourner au tableau clients</a>
     {{ include('customer/_delete_form.html.twig') }}
 
 

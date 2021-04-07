@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modifier le client{% endblock %}
+{% block pageTitle %}Modifier mon client{% endblock %}
 {% block body %}
-    <h1>Modifier mon client</h1>
 
     {{ include('customer/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a class="btn btn-light" href="{{ path('customer_index') }}">Retourner au tableau clients</a>
-    <br><br>
+    <a class="btn btn-light mb-2" href="{{ path('customer_index') }}">Retourner au tableau clients</a>
     {{ include('customer/_delete_form.html.twig') }}
 {% endblock %}
