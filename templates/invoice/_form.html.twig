@@ -1,0 +1,94 @@
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Renseigner vos informations ici:</h3>
+    </div>
+    <div class="card-body">
+        <!-- form start -->
+        {{ form_start(form) }}
+        <div class="row">
+            
+            <div class="col-6 mb-3 frame-sale-name">
+                <label for="{{ form.customer.vars.id }}" class="required">{{ form.customer.vars.label|trans }}</label>
+                {{ form_widget(form.customer,{'attr':{'class':'form-control sale-name'}}) }}
+            </div>
+            <div class="col-6 mb-3 frame-sale-name">
+                <label for="{{ form.createdDate.vars.id }}" class="required">{{ form.createdDate.vars.label|trans }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    {{ form_widget(form.createdDate,{'attr':{'class':'form-control sale-name','data-inputmask-alias':'datetime','data-inputmask-inputformat':'dd/mm/yyyy','data-mask':'1'}}) }}
+                  </div>
+            </div>
+        </div>
+        {% set prototype =
+            '<div id="' ~ form.invoiceLines.vars.prototype.vars.id ~ '"  class="invoice-line">
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="' ~ form.invoiceLines.vars.prototype.label.vars.id ~ '" class="required">' ~ form.invoiceLines.vars.prototype.label.vars.label|trans ~ '</label>
+                        ' ~ form_widget(form.invoiceLines.vars.prototype.label,{'attr':{'class':'form-control sale-label'}})  ~ '
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="' ~ form.invoiceLines.vars.prototype.quantity.vars.id ~ '" class="required">' ~ form.invoiceLines.vars.prototype.quantity.vars.label|trans ~ '</label>
+                        ' ~ form_widget(form.invoiceLines.vars.prototype.quantity,{'attr':{'class':'form-control quantity'}})  ~ '
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label for="' ~ form.invoiceLines.vars.prototype.amountTaxIncluded.vars.id ~ '" class="required">' ~ form.invoiceLines.vars.prototype.amountTaxIncluded.vars.label|trans ~ '</label>
+                        ' ~ form_widget(form.invoiceLines.vars.prototype.amountTaxIncluded,{'attr':{'class':'form-control amountTaxIncluded'}})  ~ '
+                    </div>
+                </div>
+            </div>'
+        %}
+        <ul class="invoice-lines" data-prototype="{{ prototype|e('html_attr') }}">
+            {% for invoiceLine in form.invoiceLines %}
+                {# {{ dump(invoiceLine) }} #}
+                <li>
+                    <div id="{{ invoiceLine.vars.id }}" class="invoice-line">
+                        <div class="row">
+                            <div class="col-6 mb-5 frame-sale-name">
+                                <label for="{{ invoiceLine.label.vars.id }}" class="required">{{ invoiceLine.label.vars.label|trans }}</label>
+                                {{ form_widget(invoiceLine.label,{'attr':{'class':'form-control sale-name'}}) }}
+                            </div>
+                            <div class="col-6 mb-5">
+                                <label for="{{ invoiceLine.quantity.vars.id }}" class="required">{{ invoiceLine.quantity.vars.label|trans }}</label>
+                                {{ form_widget(invoiceLine.quantity,{'attr':{'class':'form-control quantity'}}) }}
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label for="{{ invoiceLine.amountTaxIncluded.vars.id }}" class="required">{{ invoiceLine.amountTaxIncluded.vars.label|trans }}</label>
+                                {{ form_widget(invoiceLine.amountTaxIncluded,{'attr':{'class':'form-control amountTaxIncluded'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <button type="button" class="btn btn-outline-success mb-3 add_item_link" data-collection-holder-class="invoice-lines">Ajouter une ligne de facturation</button>
+        {# {{ dump(form) }} #}
+        
+        <div class="row">
+            <div class="col-4 mb-3 text-center frame-sale-name">
+                <label for="" class="required">Montant Total HT</label>
+                <div>
+                    <span id="amount-total">{{ invoice.amountTotal }}</span>€
+                </div>
+            </div>
+            <div class="col-4 mb-3 text-center frame-sale-name">
+                <label for="" class="required">Montant Total TVA</label>
+                <div>
+                    <span id="amount-totalTVA">{{ invoice.amountTotalVAT }}</span>€
+                </div>
+            </div>
+            <div class="col-4 mb-3 text-center frame-sale-name">
+                <label for="" class="required">Montant Total TTC</label>
+                <div>
+                    <span id="amount-totalTTC">{{ invoice.amountTotalIncluded }}</span>€
+                </div>
+            </div>
+        </div>
+        {{ form_widget(form) }}
+        <div class="card-footer">
+            <button class="btn btn-outline-success btn-lg btn-block">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

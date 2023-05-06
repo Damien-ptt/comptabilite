@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/styles-invoice.css') }}">
+    <title>Facture</title>
+</head>
+<body>
+    <div class="container print">
+        <div class="row">
+            <div class="col-8">
+                <h1>Facture</h1>
+                <div class="bill-infos"> 
+                    <span>Référence : {{ invoice.reference }}</span><br>
+                    <span>Émise le {{ invoice.createdDate|date("d/m/Y") }}</span><br>
+                    <span>Référence du virement : {{ invoice.bankTransferReference }}</span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="logo">
+                    <img src="{{ asset('img/logo-invoice.png') }}" alt="{{ company.companyName }}">
+                </div>
+            </div>
+        </div>
+        <div class="sep"></div>
+        <div class="row company-and-customer-infos">
+            <div class="col-8">
+                <h2>Société</h2>
+                <hr>
+                <span>{{ company.companyName }}</span><br>
+                <span>{{ company.streetName }}</span><br>
+                <span>{{company.postalCode}} {{company.city}}</span><br>
+                <span>{{company.country}}</span><br>
+                <span>N° SIRET: {{company.siret}}</span><br>
+            </div>
+            <div class="col-4">
+                <h2>Client</h2>
+                <hr>
+                <span>{{ invoice.customer.companyName }}</span><br>
+                <span>{{ invoice.customer.streetName }}</span><br>
+                <span>{{ invoice.customer.postalCode }} {{ invoice.customer.city }}, {{ invoice.customer.country }}</span><br>
+                <span>Contact : {{ invoice.customer.contactFirstName }} {{ invoice.customer.contactLastName }}</span><br>
+                <span>N° SIRET: {{invoice.customer.siret}}</span><br>
+                <span>N° TVA: {{ invoice.customer.tvaNumber }}</span><br>
+            </div>
+        </div>
+        <div class="sep"></div>
+        <div class="delivery">
+            <h2>Prestation</h2>
+            <hr>
+            <p class="mission-title">Maintenance mois de février</p>
+            <div class="delivery-details">
+                <div class="delivery-details-title">
+                    <div class="row delivery-details-title">
+                        <div class="col-6">Détail</div>
+                        <div class="col-2 text-center">Quantité</div>
+                        <div class="col-2 text-right">Prix unit. (HT)</div>
+                        <div class="col-2 text-right">TOTAL (HT)</div>
+                    </div>
+                </div>
+                <div class="delivery-details-lines">
+                    {% for invoiceLine in invoice.invoiceLines %}
+                        <div class="row ">
+                            <div class="col-6">
+                                <p>
+                                    {{ invoiceLine.label }}<br>
+                                </p>
+                            </div>
+                            <div class="col-2 text-center">{{ invoiceLine.quantity }}</div>
+                            <div class="col-2 text-right">{{ invoiceLine.amount|number_format(2) }}</div>
+                            <div class="col-2 text-right">{{ invoiceLine.amountTotal|number_format(2) }} €</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="sep"></div>
+        <div class="sep"></div>
+        <p class="thank-you text-center">Merci pour votre confiance</p>
+        <div class="sep"></div>
+        <div class="sep"></div>
+        <div class="payment">
+            <p>
+                Pour payer par virement, veuillez utiliser les coordonnées bancaires ci-dessous :
+                <br>
+            </p>
+        </div>
+        <div class="sep"></div>
+        <div class="sep"></div>
+        <p class="legal-notice text-center">
+            {{ company.companyName }}, Micro entrepreneur enregistré sous le numéro {{company.siret}}.<br>
+        </p>
+    </div>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yo les petits potes!{% endblock %}
+{% set pageH1 = 'Accueil' %}
+{% block bodyClass %}dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed{% endblock %}
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Bienvenue dans le projet de comptabilité</h1>
+    </div>
+    <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Vous etes dans l'espace administateur</h2>
+                        <hr>
+                        <p class="card-text">
+                            À partir de cet espace vous pouvez gérer les pages de votre site et vos informations personnelles.
+                        </p>
+                        {% if company is null %}
+                            <div>
+                                <a class="btn btn-outline-success" href="{{ path('company_new')}}">Ajouter vos informations</a>
+                            </div>
+                        {% else %}
+                                <a class="btn btn-outline-warning" href="{{ path('company_edit',{'id':company.id}) }}">Modifier vos informations</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

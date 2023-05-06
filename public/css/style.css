@@ -1,0 +1,11 @@
+ul.invoice-lines{
+    color: rgb(247, 255, 130);
+    list-style-type: none;
+    padding: 0;
+}
+ul.invoice-lines li {
+    padding: 20px;
+    border: 1px solid rgb(0, 225, 255);
+    margin-top: 20px;
+    border-radius: 25px;
+}

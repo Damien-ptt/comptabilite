@@ -1,0 +1,58 @@
+<div class="card card-info">
+    <div class="card-header">
+    <h3 class="card-title">Renseigner vos informations ici:</h3>
+    </div>
+    
+    <!-- form start -->
+    {{ form_start(form) }}
+        <div class="card-body">
+            <div class="container mx-auto">
+                <div class="form-group">
+                    {{ form_label(form.customerCode) }}
+                    {{ form_widget(form.customerCode,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.companyName) }}
+                    {{ form_widget(form.companyName,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.siret) }}
+                    {{ form_widget(form.siret,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.streetName) }}
+                    {{ form_widget(form.streetName,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.city) }}
+                    {{ form_widget(form.city,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.postalCode) }}
+                    {{ form_widget(form.postalCode,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.country) }}
+                    {{ form_widget(form.country,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.contactFirstName) }}
+                    {{ form_widget(form.contactFirstName,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.contactLastName) }}
+                    {{ form_widget(form.contactLastName,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.tvaNumber) }}
+                    {{ form_widget(form.tvaNumber,{'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        {{ form_rest(form) }}
+        <div class="card-footer">
+            <button class="btn {% if button_label is defined %}btn-outline-warning{% else %}btn-outline-success{% endif %} btn-lg btn-block">{{ button_label|default('Ajouter') }}</button>
+        </div>
+    {{ form_end(form) }}
+</div>

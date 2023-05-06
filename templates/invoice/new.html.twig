@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle facture{% endblock %}
+{% block pageTitle %}Créer votre nouvelle facture{% endblock %}
+{% block body %}
+
+    {{ include('invoice/_form.html.twig') }}
+
+    <a class="btn btn-outline-light" href="{{ path('invoice_index') }}">Revenir au tableau</a>
+{% endblock %}
+
+{% block footerJs %}
+    {{ include('invoice/form_js.html.twig') }}
+{% endblock %}

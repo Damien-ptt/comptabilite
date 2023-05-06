@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier votre facture{% endblock %}
+{% block pageTitle %}Modifier ma facture{% endblock %}
+{% block body %}
+
+    {{ include('invoice/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+    <a class="btn btn-light" href="{{ path('invoice_index') }}">Retourner au tableau de facture</a>
+
+    {{ include('invoice/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block footerJs %}
+    {{ include('invoice/form_js.html.twig') }}
+{% endblock %}

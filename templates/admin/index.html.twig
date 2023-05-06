@@ -1,0 +1,22 @@
+{% block title %}Bienvenue{% endblock %}
+
+{% set pageH1 = 'Accueil' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Bienvenue dans l'espace d'administration</h2>
+                    <hr>
+                    <p class="card-text">
+                        À partir de cet espace vous pouvez gérer les pages de votre site et vos informations personnelles.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('fos_user_profile_show') }}" class="btn btn-primary">Mon compte</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

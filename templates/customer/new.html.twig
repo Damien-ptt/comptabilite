@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer votre nouveau client{% endblock %}
+{% block pageTitle %}Créer votre nouveau client{% endblock %}
+{% block body %}
+
+    {{ include('customer/_form.html.twig') }}
+
+    <a class="btn btn-outline-light" href="{{ path('customer_index') }}">Retourner a l'accueil</a>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ customer.id }}</td>
+            </tr>
+            <tr>
+                <th>CustomerCode</th>
+                <td>{{ customer.customerCode }}</td>
+            </tr>
+            <tr>
+                <th>Nom d'entreprise</th>
+                <td>{{ customer.companyName }}</td>
+            </tr>
+            <tr>
+                <th>Nom de rue</th>
+                <td>{{ customer.streetName }}</td>
+            </tr>
+            <tr>
+                <th>Code postale</th>
+                <td>{{ customer.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ customer.city }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ customer.country }}</td>
+            </tr>
+            <tr>
+                <th>Prénom contact</th>
+                <td>{{ customer.contactFirstName }}</td>
+            </tr>
+            <tr>
+                <th>Nom contact</th>
+                <td>{{ customer.contactLastName }}</td>
+            </tr>
+            <tr>
+                <th>N°SIRET</th>
+                <td>{{ customer.siret }}</td>
+            </tr>
+            <tr>
+                <th>N° de TVA</th>
+                <td>{{ customer.tvaNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning mb-2 mr-1" href="{{ path('customer_edit', {'id': customer.id}) }}">Mettre à jour</a>
+
+    <a class="btn btn-light mb-2" href="{{ path('customer_index') }}">Retourner au tableau clients</a>
+    {{ include('customer/_delete_form.html.twig') }}
+
+
+{% endblock %}
+ 

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier vos société{% endblock %}
+{% block bodyClass %}dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed{% endblock %}
+{% block pageTitle %}Modifier votre société{% endblock %}
+
+{% block body %}
+    {{ include('company/_form.html.twig', {'button_label': 'Enregistrer vos modifications'}) }}
+    <a class="btn btn-light" href="{{ path('homepage') }}">Retour a l'accueil</a>
+{% endblock %}

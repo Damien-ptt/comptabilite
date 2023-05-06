@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer votre entreprise{% endblock %}
+{% block pageTitle %}Créer votre entreprise{% endblock %}
+{% block body %}
+
+    {{ include('company/_form.html.twig') }}
+
+    <a class="btn btn-outline-light" href="{{ path('homepage') }}">Retourner a l'accueil</a>
+{% endblock %} 
